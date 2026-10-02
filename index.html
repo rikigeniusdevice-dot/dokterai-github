@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokter Riki | Konsultan AI Marketing & Sales Klinik Kecantikan Premium</title>
+<style>
+  :root {
+    --bg: #ffffff; --soft: #f5f8fb; --line: #e3e9ef;
+    --ink: #12263a; --muted: #5b6b7b;
+    --blue: #0179b7; --blue-dark: #015f90; --orange: #ff6b35;
+    --red-soft: #fdf1ee; --green-soft: #eef8f3; --green: #1a9c62;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.6;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0; }
+  h2 { font-size: 1.6rem; margin-bottom: 8px; text-align: center; }
+  .sub { color: var(--muted); text-align: center; margin-bottom: 32px; }
+
+  /* HERO */
+  .hero { background: linear-gradient(180deg, var(--soft), var(--bg)); text-align: center; padding: 72px 0 56px; }
+  .avatar {
+    width: 88px; height: 88px; border-radius: 50%; margin: 0 auto 18px;
+    background: var(--blue); color: #fff; font-size: 2.4rem;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 24px rgba(1, 121, 183, .25);
+  }
+  .label { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+  .hero h1 { font-size: 2.4rem; margin: 6px 0 14px; }
+  .badge {
+    display: inline-block; padding: 6px 16px; border-radius: 999px;
+    background: var(--green-soft); color: var(--green); font-weight: 600; font-size: .9rem;
+    border: 1px solid #cdebdc; animation: glow 2s ease-in-out infinite;
+  }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(26, 156, 98, .35); }
+    50% { box-shadow: 0 0 0 8px rgba(26, 156, 98, 0); }
+  }
+  .tagline { max-width: 640px; margin: 20px auto 0; color: var(--muted); font-size: 1.08rem; }
+
+  /* PROBLEM & SOLUTION */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card { border: 1px solid var(--line); border-radius: 14px; padding: 24px; background: #fff; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 14px; }
+  .chaos { background: var(--red-soft); border-color: #f6d9d1; }
+  .solution { background: var(--green-soft); border-color: #cdebdc; }
+  .card ul { list-style: none; }
+  .card li { padding: 8px 0 8px 28px; position: relative; }
+  .chaos li::before { content: "✕"; position: absolute; left: 0; color: #d6492a; font-weight: 700; }
+  .solution li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+  /* CAPABILITIES */
+  .alt { background: var(--soft); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cap .icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .cap p { color: var(--muted); font-size: .95rem; margin-bottom: 14px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span {
+    font-size: .75rem; padding: 3px 10px; border-radius: 999px;
+    background: #e6f3fa; color: var(--blue-dark); font-weight: 600;
+  }
+  .note { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 22px; }
+
+  /* SIMULATION */
+  .sim { max-width: 640px; margin: 0 auto; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #fff; }
+  .sim-head { background: var(--blue); color: #fff; padding: 14px 18px; font-weight: 600; }
+  .sim-head small { display: block; font-weight: 400; opacity: .85; }
+  .chat { height: 300px; overflow-y: auto; padding: 18px; background: var(--soft); display: flex; flex-direction: column; gap: 10px; }
+  .hint { color: var(--muted); text-align: center; margin: auto; font-size: .95rem; }
+  .msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; font-size: .93rem; animation: pop .25s ease; }
+  .msg.user { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 4px; }
+  .msg.agent { align-self: flex-start; background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+  @keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .typing span {
+    display: inline-block; width: 7px; height: 7px; margin: 0 2px; border-radius: 50%;
+    background: var(--muted); animation: blink 1.2s infinite;
+  }
+  .typing span:nth-child(2) { animation-delay: .2s; }
+  .typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+  .scenarios { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; border-top: 1px solid var(--line); }
+  .scenarios button {
+    flex: 1 1 160px; padding: 10px 12px; border-radius: 10px; cursor: pointer;
+    border: 1px solid var(--blue); background: #fff; color: var(--blue-dark);
+    font-size: .88rem; font-weight: 600; font-family: inherit; transition: .2s;
+  }
+  .scenarios button:hover { background: var(--blue); color: #fff; }
+
+  /* CTA & FOOTER */
+  .cta { text-align: center; }
+  .cta p { color: var(--muted); max-width: 520px; margin: 0 auto 24px; }
+  .btn {
+    display: inline-block; padding: 16px 36px; border-radius: 999px;
+    background: var(--orange); color: #fff; font-weight: 700; font-size: 1.05rem;
+    text-decoration: none; box-shadow: 0 8px 22px rgba(255, 107, 53, .35); transition: .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(255, 107, 53, .45); }
+  footer { text-align: center; padding: 28px 20px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+
+  @media (max-width: 720px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.9rem; }
+    section { padding: 44px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="avatar">🩺</div>
+    <div class="label">AI Assistant</div>
+    <h1>Dokter Riki</h1>
+    <div class="badge">🟢 Status: Active & Ready 24/7</div>
+    <p class="tagline">Konsultan AI Marketing & Sales profesional yang berfokus membantu klinik kecantikan premium meningkatkan pertumbuhan revenue.</p>
+  </div>
+</header>
+
+<!-- 2. PROBLEM & SOLUTION -->
+<section>
+  <div class="wrap">
+    <h2>Dari Masalah ke Solusi</h2>
+    <p class="sub">Tiga keluhan yang paling sering muncul di klinik kecantikan premium.</p>
+    <div class="grid-2">
+      <div class="card chaos">
+        <h3>😵 The Chaos</h3>
+        <ul>
+          <li>Revenue tidak kunjung naik, bahkan cenderung menurun.</li>
+          <li>Yang tanya-tanya banyak, tapi yang closing sedikit.</li>
+          <li>Bikin konten tiap hari, tapi belum ada yang viral.</li>
+        </ul>
+      </div>
+      <div class="card solution">
+        <h3>🎯 The Solution</h3>
+        <ul>
+          <li>Tes diagnostik untuk menemukan akar masalah (root cause analysis), bukan sekadar gejalanya.</li>
+          <li>Pendampingan strategis yang disusun berdasarkan data klinik Anda.</li>
+          <li>Eksekusi strategi bersama tim klinik sampai berjalan.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CORE CAPABILITIES -->
+<section class="alt">
+  <div class="wrap">
+    <h2>Kemampuan Utama</h2>
+    <p class="sub">Tiga hal yang dikerjakan, beserta tools yang terhubung.</p>
+    <div class="grid-3">
+      <div class="card cap">
+        <div class="icon">🔍</div>
+        <h3>Diagnostik Akar Masalah</h3>
+        <p>Membaca data penjualan klinik untuk mencari di titik mana revenue bocor.</p>
+        <div class="tags"><span>Sales Analytic Dashboard</span><span>ROI Calculator</span><span>Google Sheets</span></div>
+      </div>
+      <div class="card cap">
+        <div class="icon">🚀</div>
+        <h3>Pendampingan & Eksekusi</h3>
+        <p>Menyusun strategi konten dan alur follow-up, lalu mengawal pelaksanaannya.</p>
+        <div class="tags"><span>Instagram</span><span>WhatsApp</span><span>Google Calendar</span><span>Google Drive</span></div>
+      </div>
+      <div class="card cap">
+        <div class="icon">🤝</div>
+        <h3>Human-in-the-Loop</h3>
+        <p>Keputusan penting selalu menunggu persetujuan manusia sebelum dijalankan.</p>
+        <div class="tags"><span>Human-in-the-Loop</span><span>Approval Manual</span></div>
+      </div>
+    </div>
+    <p class="note">Tools lain akan terus ditambahkan ke depannya.</p>
+  </div>
+</section>
+
+<!-- 4. INTERACTIVE SIMULATION -->
+<section>
+  <div class="wrap">
+    <h2>Coba Simulasinya</h2>
+    <p class="sub">Pilih salah satu skenario untuk melihat cara agent merespons.</p>
+    <div class="sim">
+      <div class="sim-head">🩺 Dokter Riki <small>AI Assistant · simulasi percakapan</small></div>
+      <div class="chat" id="chat"><div class="hint">Klik salah satu tombol di bawah untuk memulai.</div></div>
+      <div class="scenarios">
+        <button data-key="revenue">📉 Revenue menurun</button>
+        <button data-key="closing">💬 Banyak tanya, sedikit closing</button>
+        <button data-key="konten">📱 Konten belum viral</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CTA & FOOTER -->
+<section class="cta alt">
+  <div class="wrap">
+    <h2>Siap Mencari Akar Masalah Klinik Anda?</h2>
+    <p>Mulai dari obrolan singkat. Kirim pesan lewat Instagram untuk menjadwalkan tes diagnostik.</p>
+    <a class="btn" href="https://instagram.com/dr.r1k1" target="_blank" rel="noopener">Hubungi @dr.r1k1 di Instagram</a>
+  </div>
+</section>
+<footer>Built with AI · AI Builder Bootcamp Showcase</footer>
+
+<script>
+  const scenarios = {
+    revenue: {
+      user: "Revenue klinik saya 3 bulan terakhir turun terus. Harus mulai dari mana?",
+      agent: [
+        "Kita mulai dari tes diagnostik dulu, supaya tidak menebak-nebak.",
+        "Saya akan membaca data penjualan di Sales Analytic Dashboard: jumlah pasien baru, pasien yang kembali, dan nilai transaksi rata-rata. Dari situ terlihat penurunannya berasal dari mana.",
+        "Hasilnya saya rangkum di Google Sheets, lalu kita jadwalkan sesi pembahasan lewat Google Calendar. Rekomendasi baru dijalankan setelah Anda setujui."
+      ]
+    },
+    closing: {
+      user: "Chat WhatsApp ramai, tapi yang booking sedikit sekali.",
+      agent: [
+        "Itu tanda masalahnya ada di antara chat pertama dan booking, bukan di jumlah prospek.",
+        "Saya akan memeriksa alur percakapan WhatsApp: kecepatan balasan, cara menjawab pertanyaan harga, dan ada tidaknya follow-up setelah prospek diam.",
+        "Dari temuan itu, saya susun perbaikan skrip dan jadwal follow-up untuk tim Anda. Tim tetap yang memutuskan dan mengirim pesannya."
+      ]
+    },
+    konten: {
+      user: "Saya posting Instagram tiap hari, tapi belum ada yang viral.",
+      agent: [
+        "Untuk klinik premium, viral bukan ukuran utamanya. Yang perlu dilihat: apakah konten mendatangkan prospek yang sesuai target.",
+        "Saya akan meninjau konten Instagram Anda dan mencocokkannya dengan data chat masuk, lalu menghitung potensinya dengan ROI Calculator.",
+        "Hasilnya berupa rencana konten yang tersimpan di Google Drive, fokus pada topik yang terbukti mendatangkan pertanyaan serius."
+      ]
+    }
+  };
+
+  const chat = document.getElementById("chat");
+  let runId = 0;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+
+  function addMsg(text, who) {
+    const el = document.createElement("div");
+    el.className = "msg " + who;
+    el.textContent = text;
+    chat.appendChild(el);
+    chat.scrollTop = chat.scrollHeight;
+    return el;
+  }
+
+  function addTyping() {
+    const el = document.createElement("div");
+    el.className = "msg agent typing";
+    el.innerHTML = "<span></span><span></span><span></span>";
+    chat.appendChild(el);
+    chat.scrollTop = chat.scrollHeight;
+    return el;
+  }
+
+  async function play(key) {
+    const id = ++runId;
+    const s = scenarios[key];
+    chat.innerHTML = "";
+    addMsg(s.user, "user");
+    for (const line of s.agent) {
+      await wait(500);
+      if (id !== runId) return;
+      const t = addTyping();
+      await wait(1300);
+      if (id !== runId) return;
+      t.remove();
+      addMsg(line, "agent");
+    }
+  }
+
+  document.querySelectorAll(".scenarios button").forEach(btn => {
+    btn.addEventListener("click", () => play(btn.dataset.key));
+  });
+</script>
+</body>
+</html>
